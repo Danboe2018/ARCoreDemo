@@ -9,7 +9,9 @@ pipeline {
         stage('clean') {
             steps { 
                 echo 'Cleaning..'
+                sh 'git reset --hard HEAD'
                 sh './gradlew clean'
+                sh './gradlew lintFix'
             }
         }
         stage('Build') {
